@@ -1,15 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Michael | AI-Powered Web Solutions</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
+    <meta name="description" content="John Michael P - Full Stack Developer creating modern websites, business solutions and AI-powered applications.">
+    <meta name="author" content="John Michael P">
+
+    <title>John Michael P | Full Stack Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <style>
-        /* --- STYLING START --- */
+        :root {
+            --bg: #050810;
+            --card: #101725;
+            --cyan: #00f7ff;
+            --purple: #7000ff;
+            --white: #ffffff;
+            --muted: #b5bdca;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,57 +35,93 @@
         }
 
         body {
-            background: #050810;
-            color: #ffffff;
+            background: var(--bg);
+            color: var(--white);
             overflow-x: hidden;
         }
 
-        /* Navigation Bar */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        section {
+            padding: 110px 10%;
+            scroll-margin-top: 75px;
+        }
+
+        /* NAVBAR */
+
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 8%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 8, 16, 0.9);
+            background: rgba(5, 8, 16, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo { font-size: 1.5rem; font-weight: 700; color: #00f7ff; }
-        .nav-links { list-style: none; display: flex; }
-        .nav-links li { margin-left: 35px; }
-        .nav-links a { text-decoration: none; color: #fff; font-size: 0.9rem; font-weight: 400; transition: 0.3s; }
-        .nav-links a:hover { color: #00f7ff; text-shadow: 0 0 10px #00f7ff; }
+        .logo {
+            color: var(--cyan);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
 
-        /* Hero Section with Photo */
-        section { padding: 120px 10%; min-height: 100vh; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .menu-btn {
+            display: none;
+            color: var(--cyan);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
         .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(0, 247, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(
+                circle at center,
+                rgba(0,247,255,0.12),
+                transparent 65%
+            );
         }
 
-        /* Profile Image Styling */
         .profile-img-container {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid #00f7ff;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
-            margin-bottom: 25px;
-            transition: 0.3s;
-        }
-        
-        .profile-img-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 247, 255, 0.7);
+            border: 4px solid var(--cyan);
+            box-shadow: 0 0 30px rgba(0,247,255,0.4);
+            margin-bottom: 30px;
         }
 
         .profile-img-container img {
@@ -78,208 +130,205 @@
             object-fit: cover;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
-        .hero h1 span { color: #00f7ff; }
-        .hero p { font-size: 1.1rem; opacity: 0.8; max-width: 700px; line-height: 1.6; }
-
-        /* Glassmorphism Cards */
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 60px; }
-        .section-title span { color: #00f7ff; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            margin-bottom: 15px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
+        .hero h1 span,
+        .section-title span {
+            color: var(--cyan);
         }
 
-        .card:hover {
-            transform: translateY(-12px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: #00f7ff;
-            box-shadow: 0 15px 35px rgba(0, 247, 255, 0.15);
+        .hero p {
+            max-width: 750px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
-        .card i { font-size: 3rem; color: #00f7ff; margin-bottom: 25px; }
-        .card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-        .card p { font-size: 0.95rem; opacity: 0.7; line-height: 1.5; }
+        .tagline {
+            color: var(--cyan);
+            margin-bottom: 15px;
+        }
 
-        /* Buttons */
+        /* BUTTON */
+
         .btn {
             display: inline-block;
-            margin-top: 35px;
-            padding: 14px 40px;
-            background: linear-gradient(45deg, #00f7ff, #7000ff);
-            color: #fff !important;
-            text-decoration: none;
+            margin-top: 30px;
+            padding: 13px 32px;
+            background: linear-gradient(45deg, var(--cyan), var(--purple));
+            color: white;
             border-radius: 50px;
             font-weight: 600;
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0, 247, 255, 0.2);
         }
 
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,247,255,0.3);
         }
 
-        /* Project Placeholders */
+        /* SECTION TITLE */
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.7rem);
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyan);
+            box-shadow: 0 10px 30px rgba(0,247,255,0.12);
+        }
+
+        .card i {
+            font-size: 2.7rem;
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        /* SKILLS */
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 12px 25px;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: var(--cyan);
+            color: var(--bg);
+        }
+
+        /* PROJECTS */
+
         .img-box {
             width: 100%;
-            height: 200px;
-            background: #111;
+            height: 190px;
             border-radius: 15px;
-            margin-bottom: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+            background: #080d17;
         }
 
-        /* Footer */
-        footer {
-            padding: 60px 10%;
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-btn {
+            display: inline-block;
+            margin: 15px 0 20px;
+            padding: 9px 20px;
+            background: linear-gradient(45deg, var(--cyan), var(--purple));
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+
+        .contact-content {
             text-align: center;
-            background: #020408;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-content p {
+            color: var(--muted);
+        }
+
+        .social-icons {
+            margin-top: 40px;
         }
 
         .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 15px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 0 8px;
+            font-size: 1.3rem;
             transition: 0.3s;
-            opacity: 0.6;
         }
 
-        .social-icons a:hover { opacity: 1; color: #00f7ff; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
+        .social-icons a:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            transform: translateY(-5px);
         }
-    </style>
-</head>
-<body>
 
-    <nav>
-        <div class="logo">JOHN MICHAEL P</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+        /* FOOTER */
 
-    <section id="home" class="hero">
-        <div class="profile-img-container">
-            <img src="john.jpg" alt="John Michael">
-        </div>
-        
-        <h1>Building the <span>Digital Future</span></h1>
-        <p>I am John Michael, a Full Stack Developer specialized in creating professional websites for local businesses using cutting-edge AI technologies.</p>
-        <a href="#projects" class="btn">Explore My Work</a>
-    </section>
+        footer {
+            text-align: center;
+            padding: 30px 10%;
+            background: #020408;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
 
-    <section id="services">
-        <h2 class="section-title">My <span>Expertise</span></h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-shopping-cart"></i>
-                <h3>Business Websites</h3>
-                <p>Custom-built websites designed to showcase your products and attract local customers to your shop.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>MERN Development</h3>
-                <p>Developing high-performance web applications using MongoDB, Express, React, and Node.js.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-brain"></i>
-                <h3>AI Integration</h3>
-                <p>Leveraging artificial intelligence to build smarter, faster, and more modern digital solutions.</p>
-            </div>
-        </div>
-    </section>
+        /* ANIMATION */
 
-    <section id="projects">
-        <h2 class="section-title">Recent <span>Projects</span></h2>
-        <div class="grid">
-            <div class="card">
-                <div class="img-box">
-                    <img src="download.png" style="width:100%; height:100%; object-fit:cover;">
-                    <a href="https://magalir-sangam.vercel.app/" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">
-                    Live Demo <i class="fas fa-external-link-alt"></i>
-                </a>
-                </div>
-                <h3>Attendance System</h3>
-                <p>A web-based tracker developed for colleges to manage student and teacher records efficiently.</p>
-            </div>
-            <div class="card">
-                <div class="img-box">
-                    <img src="download (1).png" style="width:100%; height:100%; object-fit:cover;">
-                    <a href="" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">
-                    Live Demo <i class="fas fa-external-link-alt"></i>
-                </a>
-                </div>
-                <h3>Association Manager</h3>
-                <p>A specialized app for local "Magalir Sangam" associations to track savings and finances.</p>
-            </div>
-            <div class="card">
-                <div class="img-box" style="display:flex; align-items:center; justify-content:center;">
-                    <i class="fas fa-plus" style="margin:0;"></i>
-                </div>
-                <h3>Your Project</h3>
-                <p>Ready to take your business online? Let’s build your professional store website today.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" style="text-align: center; min-height: 60vh;">
-        <h2 class="section-title">Let's <span>Connect</span></h2>
-        <p>Interested in a website for your business? Click below to start the conversation.</p>
-        
-        <a href="https://wa.me/918667238840" target="_blank" class="btn">Get in Touch on WhatsApp</a>
-        
-        <div class="social-icons" style="margin-top: 50px;">
-            <a href="https://wa.me/918667238840" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 John Michael P. Designed with Passion.</p>
-    </footer>
-
-    <script>
-        // Simple Fade-in Animation on Scroll
-        const observerOptions = { threshold: 0.2 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = "0";
-            card.style.transform = "translateY(30px)";
-            card.style.transition = "all 0.6s ease-out";
-            observer.observe(card);
-        });
-    </script>
-</body>
-</html>
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease
